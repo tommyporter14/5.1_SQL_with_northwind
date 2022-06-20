@@ -1,0 +1,39 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2638
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\margl1440\margr1440\vieww25120\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 Commands for 5.1:\
+***I only have 29 customers for some reason. I think maybe I didn\'92t copy the whole database. \
+***These are the commands I assume would work though.\
+1) SELECT * FROM customers;\
+2) SELECT distinct country_region FROM CUSTOMERS;\
+3) SELECT * FROM customers WHERE id = \'93BL\'94;\
+4) SELECT * FROM customers ORDER BY ID LIMIT 100;\
+5) SELECT * FROM customers WHERE zip_postal_code = "1010, 3012, 12209, 05023";\
+6) SELECT * FROM orders WHERE ship_country_region != 'null';\
+7a) SELECT * FROM customers ORDER BY country_region;\
+7b) SELECT * FROM customers ORDER BY city;\
+8) INSERT INTO customers (id, company, last_name, first_name, email_address, job_title, business_phone, home_phone, mobile_phone, fax_number, address, city, state_province, zip_postal_code, country_region, web_page, notes, attachments) values ('30', 'Company 1', 'Grand', 'Cirpus', null, 'coding', '(123)555-6666', null, null, '(123)555-6666', '123 streetname', 'Detroit', 'MI', '9999', 'USA', null, null, null);\
+9comment) ***I think they are all USA and none France so I changed it to update USA***\
+9) UPDATE orders SET ship_country_region = 'EuroZone' WHERE ship_country_region = 'USA';\
+10comment) ***didn\'92t have any orders with quantity of 1 so I changed it to quantity of 10***\
+10) DELETE FROM order_details WHERE quantity = '10';\
+11) SELECT AVG(quantity), MIN(quantity), MAX(quantity) FROM order_details;\
+12)  SELECT AVG(quantity), MIN(quantity), MAX(quantity) from order_details GROUP BY order_id;\
+13comment) ***I didn\'92t have an order number (I assumed this was \'91id\'92 from orders table) 10290, so I replaced it with id 80***\
+13) SELECT customer_id FROM orders WHERE id = '80';\
+14a) SELECT * FROM orders INNER JOIN customers ON orders.ship_city = customers.city;\
+14b) SELECT * FROM orders LEFT JOIN customers ON orders.ship_city = customers.city;\
+14c) SELECT * FROM orders RIGHT JOIN customers ON orders.ship_city = customers.city;\
+15comment) ***changed London to WI because didn\'92t see London as option***\
+15) SELECT orders.ship_city, orders.ship_state_province, customers.company FROM orders INNER JOIN customers ON orders.ship_city = customers.city WHERE ship_state_province='WI';\
+16) SELECT orders.ship_name, order_details.product_id, orders.id FROM order_details LEFT JOIN orders ON order_details.id = orders.id WHERE product_id='1';\
+17) SELECT * from customers WHERE job_title = 'Owner\'92;\
+18) SELECT * from customers WHERE job_title != 'Owner\'92;
+\f1\fs18\fsmilli9333 \expnd0\expndtw0\kerning0
+\uc0\u8232 \
+}
